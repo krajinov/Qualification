@@ -1,7 +1,7 @@
 package com.krajinov.qualification;
 
 import android.content.Context;
-import android.content.ContextWrapper;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -92,6 +92,7 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
         this.setTitle(R.string.staff_list);
 
+        //FAB postavke
         fabSetup();
         fabDisable();
 
@@ -117,18 +118,18 @@ public class MainActivity extends AppCompatActivity
         nameSur.setText("Name Surname");
 
         cir = (CircleImageView) headerLayout.findViewById(R.id.profile_image1);
-        setCirProfilePhoto();
+        cir.setImageBitmap(setProfilePhoto());
 
         staffListData();
     }
 
-    private void setCirProfilePhoto() {
+    private Bitmap setProfilePhoto() {
         Bitmap profile = loadImageFromStorage(this);
         if (profile != null) {
-            cir.setImageBitmap(profile);
-            Log.d("Zeka", "Jeste");
+            return profile;
         } else {
-            cir.setImageResource(R.drawable.profile_img);
+            profile = BitmapFactory.decodeResource(getResources(), R.drawable.profile_img);
+            return profile;
         }
     }
 
@@ -172,6 +173,7 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction.replace(R.id.fragment_container, fragment);
             fragmentTransaction.commit();
             this.setTitle(R.string.my_profile);
+
             fabEnable();
 
         } else if (id == R.id.nav_settings) {
@@ -180,7 +182,13 @@ public class MainActivity extends AppCompatActivity
             startActivityForResult(intent, 1001);
 
         } else if (id == R.id.nav_clear_cache) {
-
+            clearApplicationData();
+            StaffFragment fragment = new StaffFragment();
+            android.support.v4.app.FragmentTransaction fragmentTransaction =
+                    getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container, fragment);
+            fragmentTransaction.commit();
+            super.recreate();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -300,7 +308,7 @@ public class MainActivity extends AppCompatActivity
         });
     }
 
-    //Provjeravanje da li postoji veza na internet
+    //Provjeravanje da li postoji internet veza
     public boolean isOnline() {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = cm.getActiveNetworkInfo();
@@ -416,6 +424,7 @@ public class MainActivity extends AppCompatActivity
                 getBaseContext().getResources().getDisplayMetrics());
     }
 
+    //Camera Intent
     public void capturePhoto() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (intent.resolveActivity(getPackageManager()) != null) {
@@ -423,6 +432,7 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    //Spremanje uslikane slike
     private void saveToInternalStorage(Bitmap bitmapImage) {
 
         FileOutputStream fos = null;
@@ -431,19 +441,19 @@ public class MainActivity extends AppCompatActivity
             bitmapImage.compress(Bitmap.CompressFormat.PNG, 100, fos);
         } catch (Exception e) {
             e.printStackTrace();
-            Log.d("Zeka", e.getMessage());
+            Log.d("MotoG2", e.getMessage());
         } finally {
             if (fos != null) {
                 try {
                     fos.close();
                 } catch (IOException e) {
                     e.printStackTrace();
-                    Log.d("Zeka", e.getMessage());
                 }
             }
         }
     }
 
+    //Učitavanje slike iz Internal Storage-a
     private Bitmap loadImageFromStorage(Context context) {
         try {
             FileInputStream fis = context.openFileInput("profile.png");
@@ -451,9 +461,38 @@ public class MainActivity extends AppCompatActivity
             return b;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            Log.d("Zeka", e.getMessage());
+            Log.d("MotoG2", e.getMessage());
             return null;
         }
 
+    }
+
+    public void clearApplicationData() {
+        File cache = getCacheDir();
+        File appDir = new File(cache.getParent());
+        if (appDir.exists()) {
+            String[] children = appDir.list();
+            for (String s : children) {
+                if (!s.equals("lib")) {
+                    deleteDir(new File(appDir, s));
+                }
+            }
+        }
+        Toast.makeText(MainActivity.this,
+                R.string.app_data_deleted, Toast.LENGTH_SHORT).show();
+    }
+
+    public static boolean deleteDir(File dir) {
+        if (dir != null && dir.isDirectory()) {
+            String[] children = dir.list();
+            for (int i = 0; i < children.length; i++) {
+                boolean success = deleteDir(new File(dir, children[i]));
+                if (!success) {
+                    return false;
+                }
+            }
+        }
+
+        return dir.delete();
     }
 }

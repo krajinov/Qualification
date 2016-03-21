@@ -69,7 +69,8 @@ public class PersonAdapter extends ArrayAdapter<Person> {
         favImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, person.getFirst_name() + " added to favorites!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, person.getFirst_name()+ " " +
+                        person.getLast_name() + " added to favorites!", Toast.LENGTH_SHORT).show();
             }
         });
 

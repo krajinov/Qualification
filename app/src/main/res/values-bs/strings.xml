@@ -18,4 +18,6 @@
     <string name="language">Odaberite jezik</string>
     <string name="photo_label">Fotografija</string>
     <string name="network_status">Internet veza nije dostupna!</string>
+    <string name="name_surname_hint">Unesite Ime</string>
+    <string name="app_data_deleted">Podaci aplikacije izbrisani!</string>
 </resources>

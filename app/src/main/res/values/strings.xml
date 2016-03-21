@@ -19,5 +19,7 @@
     <string name="language">Choose language</string>
     <string name="photo_label">Photo</string>
     <string name="network_status">Network isn\'t available!</string>
+    <string name="name_surname_hint">Enter your Name</string>
+    <string name="app_data_deleted">App data deleted!</string>
 
 </resources>
