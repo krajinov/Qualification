@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Qualification</string>
+    <string name="action_settings">Postavke</string>
+    <string name="clear_cache">Pobriši predmemoriju</string>
+    <string name="image_card_desc">Kartica</string>
+    <string name="my_profile">Moj profil</string>
+    <string name="name_and_surname">Ime Prezime</string>
+    <string name="send_email">POŠALJI\n EMAIL</string>
+    <string name="set_notification">POSTAVI\n NOTIFIKACIJU</string>
+    <string name="settings">Postavke</string>
+    <string name="show_on_map">PRIKAŽI\n NA MAPI</string>
+    <string name="staff_list">Lista osoblja</string>
+    <string name="system_options">Sistemske postavke</string>
+    <string name="title_activity_maps">Mapa</string>
+    <string name="navigation_drawer_close">Zatvori navigacijski izbornik</string>
+    <string name="navigation_drawer_open">Otvori navigacijski izbornik</string>
+    <string name="language">Odaberite jezik</string>
+    <string name="photo_label">Fotografija</string>
+    <string name="network_status">Internet veza nije dostupna!</string>
+</resources>

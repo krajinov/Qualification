@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        card_view:elevation="5dp"
+        card_view:cardCornerRadius="5dp"
+        card_view:cardUseCompatPadding="true"
+        android:foreground="?android:attr/selectableItemBackground">
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imagePhoto"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:id="@+id/jobText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/imagePhoto"
+                android:layout_alignStart="@+id/imagePhoto"
+                android:layout_below="@+id/imagePhoto"
+                android:layout_centerVertical="true"
+                android:layout_margin="5dp"
+                android:layout_toLeftOf="@+id/imageCard"
+                android:layout_toStartOf="@+id/imageCard"
+                android:ellipsize="marquee"
+                android:maxLines="1"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/nameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/imageFavorites"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_toEndOf="@+id/imagePhoto"
+                android:layout_toLeftOf="@+id/imageFavorites"
+                android:layout_toRightOf="@+id/imagePhoto"
+                android:layout_toStartOf="@+id/imageFavorites"
+                android:ellipsize="marquee"
+                android:maxLines="1"
+                android:textColor="@color/colorNameText"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/imageFavorites"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/ic_action_add_favorite" />
+
+            <LinearLayout
+                android:id="@+id/layoutEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/nameText"
+                android:layout_toEndOf="@+id/imagePhoto"
+                android:layout_toRightOf="@+id/imagePhoto"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageEmail"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_email" />
+
+                <TextView
+                    android:id="@+id/emailText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:ellipsize="marquee"
+                    android:maxLines="1"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layoutEmail"
+                android:layout_toEndOf="@+id/imagePhoto"
+                android:layout_toRightOf="@+id/imagePhoto"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageLocation"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_map_marker" />
+
+                <TextView
+                    android:id="@+id/locationText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:ellipsize="marquee"
+                    android:maxLines="1"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutCalendar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layoutLocation"
+                android:layout_toEndOf="@+id/imagePhoto"
+                android:layout_toRightOf="@+id/imagePhoto"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageCalendar"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_calendar" />
+
+                <TextView
+                    android:id="@+id/calendarText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:maxLines="1"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imageCard"
+                android:layout_width="32dp"
+                android:layout_height="21dp"
+                android:layout_alignTop="@+id/salaryText"
+                android:layout_marginEnd="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_toLeftOf="@+id/salaryText"
+                android:layout_toStartOf="@+id/salaryText"
+                android:contentDescription="@string/image_card_desc" />
+
+            <TextView
+                android:id="@+id/salaryText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/imageFavorites"
+                android:layout_alignRight="@+id/imageFavorites"
+                android:layout_alignTop="@+id/jobText"
+                android:ellipsize="marquee"
+                android:textColor="@color/colorSalaryPlus"
+                android:textSize="15sp" />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+</RelativeLayout>
