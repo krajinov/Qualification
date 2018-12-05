@@ -174,6 +174,7 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction.commit();
             this.setTitle(R.string.my_profile);
 
+            // fabDisable();
             fabEnable();
 
         } else if (id == R.id.nav_settings) {
